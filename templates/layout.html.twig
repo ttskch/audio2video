@@ -8,7 +8,7 @@
         <title>
             {% block subtitle %}{% endblock %}
             {% if block('subtitle') is not empty %} | {% endif %}
-            {% block site_title %}My Silex Application{% endblock %}
+            {% block site_title %}audio2movie{% endblock %}
         </title>
     {% endspaceless %}
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
@@ -31,14 +31,14 @@
 
 <body>
 {% block body %}
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href=".">{{ block('site_title') }}</a>
+                <a class="navbar-brand" href="."><i class="fa fa-youtube-play"></i> {{ block('site_title') }}</a>
             </div>
         </div>
     </nav>
-    <div class="container-fluid">
+    <div class="container">
         <div id="content">
             {% block flashes %}
                 {% if app.session.flashbag.peekAll|length > 0 %}
@@ -61,6 +61,13 @@
 
             {% block content %}
             {% endblock %}
+            
+            {% block footer %}
+                <hr class="mt30">
+                <div class="text-center">
+                    <a href="http://ttskch.github.io" target="_blank"><b>ttskch</b></a> <i class="fa fa-copyright"></i> 2016
+                </div>
+            {% endblock %}
         </div>
     </div>
 
@@ -71,6 +78,9 @@
 
     {% block scripts %}
     {% endblock %}
+
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-575387ee08aaabea"></script>
 {% endblock body %}
 </body>
 </html>

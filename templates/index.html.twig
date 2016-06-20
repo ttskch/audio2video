@@ -1,10 +1,66 @@
 {% extends "layout.html.twig" %}
 
-{% block content %}
-    <ul class="nav nav-tabs mb15">
-        <li class="active"><a>Home</a></li>
-        <li><a href="{{ url('form') }}">Form Sample</a></li>
-    </ul>
+{% block subtitle %}Form Sample{% endblock %}
 
-    <p>Welcome to your new Silex Application!</p>
+{% block content %}
+    <div class="well">
+        <strong>{{ 'lead_description' | trans({}, 'texts') }}</strong>
+    </div>
+    <hr>
+
+    {{ form_start(form, {attr: {id: 'convert-form', novalidate: 'novalidate'}}) }}
+    <div class="row">
+        <div class="col-sm-6">
+            {{ form_row(form.audio_file) }}
+        </div>
+        <div class="col-sm-6">
+            <div id="advanced-settings" style="display: none;">
+                {{ form_row(form.output_format) }}
+                {{ form_row(form.frame_rate) }}
+
+                <ul id="tab-switcher" class="nav nav-tabs mb10">
+                    <li class="active"><a href="#tab1">{{ 'use_image_file' | trans({}, 'texts') }}</a></li>
+                    <li><a href="#tab2">{{ 'generate_image' | trans({}, 'texts') }}</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="tab1" class="tab-pane active">
+                        {{ form_row(form.image_file) }}
+                    </div>
+                    <div id="tab2" class="tab-pane">
+                        {{ form_row(form.image_resolution) }}
+
+                        {{ form_label(form.image_color) }}
+                        {{ form_errors(form.image_color) }}
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-9 col-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">#</span>
+                                        {{ form_widget(form.image_color) }}
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 col-sm-2">
+                                    <span id="color-preview" class="btn btn-block disabled" style="cursor: default; opacity: 100; border: 1px solid #ccc;"><br></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            {{ form_rest(form) }}
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit"><i class="fa fa-refresh"></i> {{ 'Convert' | trans }}</button>
+                <span id="advanced-switcher" class="btn btn-default pull-right">詳細設定</span>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://cdn.rawgit.com/hekigan/is-loading/master/jquery.isloading.min.js"></script>
 {% endblock %}

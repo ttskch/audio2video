@@ -1,5 +1,5 @@
 body {
-    padding-top: 65px;
+    padding-top: 70px;
 
     .control-label {
         &.required {
@@ -27,4 +27,23 @@ body {
     .mb20 { margin-bottom: 20px !important; }
     .mb25 { margin-bottom: 25px !important; }
     .mb30 { margin-bottom: 30px !important; }
+}
+
+// fix for select2-bootstrap.
+.select2-container {
+    width: auto !important;
+}
+
+// "is-loading" related styles.
+.isloading-overlay {
+    text-align: center;
+
+    .isloading-overlay {
+        position: relative;
+    }
+
+    .isloading-wrapper {
+        color: #fff;
+        font-size: 3em;
+    }
 }

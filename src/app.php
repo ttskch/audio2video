@@ -11,6 +11,10 @@ use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\ValidatorServiceProvider;
 
+// use the top priority Accept-Language as default locale.
+$lang = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE'])[0];
+$locale = explode(';', $lang)[0];
+
 $app = new Application();
 $app->register(new ServiceControllerServiceProvider());
 $app->register(new AssetServiceProvider());
@@ -20,10 +24,11 @@ $app->register(new HttpFragmentServiceProvider());
 $app->register(new SessionServiceProvider());
 $app->register(new FormServiceProvider());
 $app->register(new ValidatorServiceProvider());
-$app->register(new LocaleServiceProvider());
-$app->register(new TranslationServiceProvider(), [
-    'locale_fallbacks' => ['ja'],
+$app->register(new LocaleServiceProvider(), [
+//    'locale' => 'en',
+    'locale' => $locale,
 ]);
+$app->register(new TranslationServiceProvider());
 
 $app['twig'] = $app->extend('twig', function ($twig, $app) {
     // add custom globals, filters, tags, ...

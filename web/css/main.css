@@ -1,5 +1,5 @@
 body {
-  padding-top: 65px;
+  padding-top: 70px;
 }
 body .control-label.required:after {
   content: " *";
@@ -46,4 +46,17 @@ body .control-label.required:after {
 }
 #content .mb30 {
   margin-bottom: 30px !important;
+}
+.select2-container {
+  width: auto !important;
+}
+.isloading-overlay {
+  text-align: center;
+}
+.isloading-overlay .isloading-overlay {
+  position: relative;
+}
+.isloading-overlay .isloading-wrapper {
+  color: #fff;
+  font-size: 3em;
 }
