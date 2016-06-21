@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="well">
-        <strong>{{ 'lead_description' | trans({}, 'texts') }}</strong>
+        <strong>{{ 'lead_description' | trans }}</strong>
     </div>
     <hr>
 
@@ -19,8 +19,8 @@
                 {{ form_row(form.frame_rate) }}
 
                 <ul id="tab-switcher" class="nav nav-tabs mb10">
-                    <li class="active"><a href="#tab1">{{ 'use_image_file' | trans({}, 'texts') }}</a></li>
-                    <li><a href="#tab2">{{ 'generate_image' | trans({}, 'texts') }}</a></li>
+                    <li class="active"><a href="#tab1">{{ 'use_image_file' | trans }}</a></li>
+                    <li><a href="#tab2">{{ 'generate_image' | trans }}</a></li>
                 </ul>
                 <div class="tab-content">
                     <div id="tab1" class="tab-pane active">
@@ -54,7 +54,7 @@
             {{ form_rest(form) }}
             <div class="form-group">
                 <button class="btn btn-primary" type="submit"><i class="fa fa-refresh"></i> {{ 'Convert' | trans }}</button>
-                <span id="advanced-switcher" class="btn btn-default pull-right">詳細設定</span>
+                <span id="advanced-switcher" class="btn btn-default pull-right">{{ 'advanced_settings' | trans }}</span>
             </div>
         </div>
     </div>
