@@ -5,6 +5,9 @@ body .control-label.required:after {
   content: " *";
   color: #f00;
 }
+body .form-error {
+  margin-bottom: 10px;
+}
 #content .mt0 {
   margin-top: 0    !important;
 }
