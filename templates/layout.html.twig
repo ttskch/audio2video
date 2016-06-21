@@ -8,7 +8,7 @@
         <title>
             {% block subtitle %}{% endblock %}
             {% if block('subtitle') is not empty %} | {% endif %}
-            {% block site_title %}audio2video{% endblock %}
+            {% block site_title %}audio2video.com{% endblock %}
         </title>
     {% endspaceless %}
     <meta name="keywords" content="wav, mp3, m4a, aac, wma, mp4, m4v, avi, wmv, convert, generate, 変換, 生成">
@@ -36,7 +36,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="."><i class="fa fa-youtube-play"></i> {{ block('site_title') }}</a>
+                <a class="navbar-brand" href="."><i class="fa fa-play-circle"></i> {{ block('site_title') }}</a>
             </div>
         </div>
     </nav>
@@ -83,6 +83,10 @@
 
     <!-- Go to www.addthis.com/dashboard to customize your tools -->
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-575387ee08aaabea"></script>
+    ​<script>
+        var addthis_config = addthis_config || {};
+        addthis_config.data_track_clickback = false;
+    </script>
 {% endblock body %}
 </body>
 </html>

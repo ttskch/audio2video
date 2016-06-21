@@ -1,10 +1,13 @@
 <?php
 
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Tch\A2V\Converter;
 
 //Request::setTrustedProxies(array('127.0.0.1'));
 
@@ -14,9 +17,27 @@ $app->match('/', function (Request $request) use ($app) {
 
     $form->handleRequest($request);
     if ($form->isValid()) {
-        $app['session']->getFlashBag()->add('success', $app['translator']->trans('Form submitted.'));
+        
+        /** @var UploadedFile[] $files */
+        $files = $request->files->get('form');
+        $audioFile = $files['audio_file'];
+        $imageFile = $files['image_file'];
 
-        return $app->redirect($app['url_generator']->generate('homepage'));
+        $data = $request->request->get('form');
+
+        // process.
+        $converter = new Converter($audioFile, $data['output_format'], $data['frame_rate'], $imageFile, $data['image_resolution'], $data['image_color']);
+        $outputFilePath = $converter();
+
+        if (!file_exists($outputFilePath)) {
+            $app->abort(404);
+        }
+
+        $downloadFileName = sprintf('%s.%s', pathinfo($audioFile->getClientOriginalName(), PATHINFO_FILENAME), $data['output_format']);
+        return $app
+            ->sendFile($outputFilePath)
+            ->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, $downloadFileName)
+        ;
     }
 
     return $app['twig']->render('index.html.twig', [

@@ -3,3 +3,4 @@ composer.lock
 /components/
 /web/lib/
 !/web/lib/.gitkeep
+/var/cache/

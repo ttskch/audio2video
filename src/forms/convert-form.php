@@ -14,6 +14,7 @@ $form = $app['form.factory']->createBuilder(FormType::class)
         ],
         'constraints' => [
             new Assert\NotBlank(),
+            new Assert\File(),
         ],
     ])
     ->add('output_format', ChoiceType::class, [
@@ -58,6 +59,12 @@ $form = $app['form.factory']->createBuilder(FormType::class)
     ->add('image_file', FileType::class, [
         'required' => false,
         'label' => $app['translator']->trans('Image file'),
+        'attr' => [
+            'accept' => 'image/*',
+        ],
+        'constraints' => [
+            new Assert\Image(),
+        ],
     ])
     ->add('image_resolution', ChoiceType::class, [
         'required' => false,
@@ -66,12 +73,12 @@ $form = $app['form.factory']->createBuilder(FormType::class)
         'choices' => [
             '400 x 300' => '400x300',
             '800 x 600' => '800x600',
-            '600 x 600' => '600x600',
-            '1200 x 1200' => '1200x1200',
             '800 x 450' => '800x450',
             '1600 x 900' => '1600x900',
+            '600 x 600' => '600x600',
+            '1200 x 1200' => '1200x1200',
         ],
-        'data' => '1600x900',
+        'data' => '800x450',
         'expanded' => false,
         'multiple' => false,
         'constraints' => [

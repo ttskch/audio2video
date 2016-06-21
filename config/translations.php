@@ -9,8 +9,9 @@ $app['translator.domains'] = [
             'Resolution' => '解像度',
             'Background Color' => '背景色',
             'Convert' => '変換',
-            'Form submitted.' => '送信が完了しました。',
+            'Reset' => 'リセット',
 
+            'index_subtitle' => '音声ファイルを動画ファイルに変換',
             'meta_description' => 'mp3などの音声ファイルを、静止画付きの動画ファイルに変換することができます。Twitterへの30秒動画の投稿などにご活用ください。',
             'lead_description' => 'mp3などの音声ファイルを、静止画付きの動画ファイルに変換することができます。Twitterへの30秒動画の投稿などにご活用ください 😃',
             'advanced_settings' => '詳細設定',
@@ -18,6 +19,7 @@ $app['translator.domains'] = [
             'generate_image' => '画像を生成する',
         ],
         'en' => [
+            'index_subtitle' => 'Convert your audio file to video file',
             'meta_description' => "You can convert audio file like mp3 into an audio-only movie file. It's maybe useful fot attaching it to your tweets.",
             'lead_description' => "You can convert audio file like mp3 into an audio-only movie file. It's maybe useful fot attaching it to your tweets :)",
             'advanced_settings' => 'Advanced',

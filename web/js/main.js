@@ -35,25 +35,11 @@ $(function () {
     // index
     // ------------------------------
 
-    // is-loading config.
-    $('#convert-form').on('submit', function () {
-        $.isLoading({
-            'class': "fa fa-spinner fa-spin",
-        });
-    });
-
     // advanced settings switcher.
-    var $sw = $('#advanced-switcher');
+    var $sw = $('#advanced-switcher, [type="reset"]');
     $sw.on('click', function () {
         $('#advanced-settings').slideToggle(300);
-        $sw.toggleClass('active');
-
-        // (en|dis)able advanced setting form widgets.
-        if ($('#advanced-settings').css('display').toLowerCase() == 'none') {
-            $('#advanced-settings').find('input, button, select, textarea').attr('disabled', true);
-        } else {
-            $('#advanced-settings').find('input, button, select, textarea').removeAttr('disabled');
-        }
+        $sw.toggle();
     });
 
     // tab switcher.
