@@ -36,8 +36,9 @@
     },
     "scripts": {
         "run": [
-            "echo 'Started web server on http://localhost:8888'",
-            "php -S localhost:8888 -t web web/index_dev.php"
+            "composer run-script post-install-cmd",
+            "echo 'Started web server on http://0.0.0.0:8888'",
+            "php -S 0.0.0.0:8888 -t web web/index_dev.php"
         ],
         "post-install-cmd": [
             "ln -sf $(pwd)/vendor/twbs/bootstrap/dist web/lib/bootstrap",
