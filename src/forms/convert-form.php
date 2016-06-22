@@ -2,6 +2,7 @@
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -100,6 +101,12 @@ $form = $app['form.factory']->createBuilder(FormType::class)
                 'pattern' => '/^([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/',
             ]),
         ],
+    ])
+    ->add('show_advanced', HiddenType::class, [
+        'data' => 0,
+    ])
+    ->add('selected_tab', HiddenType::class, [
+        'data' => '#tab1',
     ])
     ->getForm()
 ;

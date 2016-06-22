@@ -8,30 +8,31 @@
     </div>
     <hr>
 
-    {{ form_start(form, {attr: {id: 'convert-form', novalidate: 'novalidate'}}) }}
+    {# todo remove 'novalidate' #}
+    {{ form_start(form, {name: 'form', attr: {id: 'convert-form', novalidate: 'novalidate' }}) }}
     <div class="row">
         <div class="col-sm-6">
             {{ form_row(form.audio_file) }}
             <div class="form-group">
                 <button class="btn btn-primary" type="submit"><i class="fa fa-refresh"></i> {{ 'Convert' | trans }}</button>
-                <span id="advanced-switcher" class="btn btn-link pull-right">{{ 'advanced_settings' | trans }}</span>
+                <span id="advanced-switcher" class="btn btn-default pull-right">{{ 'advanced_settings' | trans }}</span>
                 <button class="btn btn-default pull-right" type="reset" style="display: none;">{{ 'Reset' | trans }}</button>
             </div>
         </div>
         <div class="col-sm-6">
-            <div id="advanced-settings" style="display: none;">
+            <div id="advanced-settings" {% if not form.show_advanced.vars.value %}style="display: none;"{% endif %}>
                 {{ form_row(form.output_format) }}
                 {{ form_row(form.frame_rate) }}
 
                 <ul id="tab-switcher" class="nav nav-tabs mb10">
-                    <li class="active"><a href="#tab1">{{ 'use_image_file' | trans }}</a></li>
-                    <li><a href="#tab2">{{ 'generate_image' | trans }}</a></li>
+                    <li {% if form.selected_tab.vars.value == '#tab1' %}class="active"{% endif %}><a href="#tab1">{{ 'use_image_file' | trans }}</a></li>
+                    <li {% if form.selected_tab.vars.value == '#tab2' %}class="active"{% endif %}><a href="#tab2">{{ 'generate_image' | trans }}</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div id="tab1" class="tab-pane active">
+                    <div id="tab1" class="tab-pane {% if form.selected_tab.vars.value == '#tab1' %}active{% endif %}">
                         {{ form_row(form.image_file) }}
                     </div>
-                    <div id="tab2" class="tab-pane">
+                    <div id="tab2" class="tab-pane {% if form.selected_tab.vars.value == '#tab2' %}active{% endif %}">
                         {{ form_row(form.image_resolution) }}
 
                         {{ form_label(form.image_color) }}
@@ -52,8 +53,8 @@
                     </div>
                 </div>
             </div>
-            {{ form_rest(form) }}
         </div>
     </div>
+    {{ form_rest(form) }}
 
 {% endblock %}
