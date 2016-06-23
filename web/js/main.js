@@ -38,7 +38,7 @@ $(function () {
     // is-loading config.
     $('#convert-form').on('submit', function () {
         $.isLoading({
-            'class': "fa fa-spinner fa-spin",
+            'class': "fa fa-refresh fa-spin",
         });
     });
 
