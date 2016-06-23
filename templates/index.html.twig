@@ -1,10 +1,10 @@
 {% extends "layout.html.twig" %}
 
-{% block subtitle %}{{ 'index_subtitle' | trans }}{% endblock %}
+{% block subtitle %}{{ 'index_subtitle'|trans }}{% endblock %}
 
 {% block content %}
     <div class="well">
-        <strong>{{ 'lead_description' | trans }}</strong>
+        <strong>{{ 'lead_description'|trans }}</strong>
     </div>
     <hr>
 
@@ -24,8 +24,8 @@
                 {{ form_row(form.frame_rate) }}
 
                 <ul id="tab-switcher" class="nav nav-tabs mb10">
-                    <li {% if form.selected_tab.vars.value == '#tab1' %}class="active"{% endif %}><a href="#tab1">{{ 'use_image_file' | trans }}</a></li>
-                    <li {% if form.selected_tab.vars.value == '#tab2' %}class="active"{% endif %}><a href="#tab2">{{ 'generate_image' | trans }}</a></li>
+                    <li {% if form.selected_tab.vars.value == '#tab1' %}class="active"{% endif %}><a href="#tab1">{{ 'use_image_file'|trans }}</a></li>
+                    <li {% if form.selected_tab.vars.value == '#tab2' %}class="active"{% endif %}><a href="#tab2">{{ 'generate_image'|trans }}</a></li>
                 </ul>
                 <div class="tab-content">
                     <div id="tab1" class="tab-pane {% if form.selected_tab.vars.value == '#tab1' %}active{% endif %}">
