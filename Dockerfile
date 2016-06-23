@@ -5,7 +5,7 @@ RUN apt-get install -y software-properties-common # to use apt-add-repository
 RUN apt-get update
 
 # install utils
-RUN apt-get install -y vim less curl net-tools
+RUN apt-get install -y git unzip vim less curl net-tools
 
 # install ffmpeg, imagemagick
 RUN apt-get install -y ffmpeg libavcodec-extra imagemagick
