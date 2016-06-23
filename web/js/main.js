@@ -36,10 +36,10 @@ $(function () {
     // ------------------------------
 
     // advanced settings switcher.
-    var $sw = $('#advanced-switcher, [type="reset"]');
+    var $sw = $('#advanced-switcher');
     $sw.on('click', function () {
         $('#advanced-settings').slideToggle(300);
-        $sw.toggle();
+        $sw.toggleClass('active');
     });
 
     // tab switcher.
