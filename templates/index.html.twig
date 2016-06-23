@@ -34,9 +34,9 @@
                     <div id="tab2" class="tab-pane {% if form.selected_tab.vars.value == '#tab2' %}active{% endif %}">
                         {{ form_row(form.image_resolution) }}
 
-                        {{ form_label(form.image_color) }}
-                        {{ form_errors(form.image_color) }}
                         <div class="form-group">
+                            {{ form_label(form.image_color) }}
+                            {{ form_errors(form.image_color) }}
                             <div class="row">
                                 <div class="col-xs-9 col-sm-10">
                                     <div class="input-group">
