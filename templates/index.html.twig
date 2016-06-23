@@ -18,7 +18,7 @@
                 {{ form_widget(form.audio_file) }}
                 <span class="help-block"><i class="fa fa-exclamation-circle"></i> {{ 'audio_duration_warning'|trans }}</span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb30">
                 <button class="btn btn-primary" type="submit"><i class="fa fa-refresh"></i> {{ 'Convert'|trans }}</button>
                 <span id="advanced-switcher" class="btn btn-default pull-right {% if form.show_advanced.vars.value %}active{% endif %}">{{ 'advanced_settings'|trans }}</span>
             </div>
