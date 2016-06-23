@@ -14,9 +14,8 @@
         <div class="col-sm-6">
             {{ form_row(form.audio_file) }}
             <div class="form-group">
-                <button class="btn btn-primary" type="submit"><i class="fa fa-refresh"></i> {{ 'Convert' | trans }}</button>
-                <span id="advanced-switcher" class="btn btn-default pull-right">{{ 'advanced_settings' | trans }}</span>
-                <button class="btn btn-default pull-right" type="reset" style="display: none;">{{ 'Reset' | trans }}</button>
+                <button class="btn btn-primary" type="submit"><i class="fa fa-refresh"></i> {{ 'Convert'|trans }}</button>
+                <span id="advanced-switcher" class="btn btn-default pull-right {% if form.show_advanced.vars.value %}active{% endif %}">{{ 'advanced_settings'|trans }}</span>
             </div>
         </div>
         <div class="col-sm-6">
