@@ -18,7 +18,7 @@ $app->match('/', function (Request $request) use ($app) {
 
     $form->handleRequest($request);
     if ($form->isValid()) {
-        
+
         /** @var UploadedFile[] $files */
         $files = $request->files->get('form');
         $audioFile = $files['audio_file'];
@@ -30,14 +30,12 @@ $app->match('/', function (Request $request) use ($app) {
             $converter = new Converter($audioFile, $data['output_format'], $data['frame_rate'], $imageFile, $data['image_resolution'], $data['image_color']);
             $outputFilePath = $converter();
             $downloadFileName = sprintf('%s.%s', pathinfo($audioFile->getClientOriginalName(), PATHINFO_FILENAME), $data['output_format']);
-
             $app['session']->set('download', [$outputFilePath, $downloadFileName]);
-
-            return $app->redirect($app['url_generator']->generate('homepage'));
-
         } catch (Exception $e) {
             $app['session']->getFlashBag()->add('danger', $app['translator']->trans($e->getMessage()));
         }
+
+        return $app->redirect($app['url_generator']->generate('homepage'));
     }
 
     return $app['twig']->render('index.html.twig', [
