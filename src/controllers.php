@@ -1,5 +1,6 @@
 <?php
 
+use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,7 +13,7 @@ use Tch\A2V\Converter;
 //Request::setTrustedProxies(array('127.0.0.1'));
 
 $app->match('/', function (Request $request) use ($app) {
-    /** @var \Symfony\Component\Form\Form $form */
+    /** @var Form $form */
     $form = require __DIR__.'/forms/convert-form.php';
 
     $form->handleRequest($request);
