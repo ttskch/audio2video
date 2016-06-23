@@ -26,26 +26,41 @@ $app->match('/', function (Request $request) use ($app) {
 
         $data = $request->request->get('form');
 
-        // process.
-        $converter = new Converter($audioFile, $data['output_format'], $data['frame_rate'], $imageFile, $data['image_resolution'], $data['image_color']);
-        $outputFilePath = $converter();
+        try {
+            $converter = new Converter($audioFile, $data['output_format'], $data['frame_rate'], $imageFile, $data['image_resolution'], $data['image_color']);
+            $outputFilePath = $converter();
+            $downloadFileName = sprintf('%s.%s', pathinfo($audioFile->getClientOriginalName(), PATHINFO_FILENAME), $data['output_format']);
 
-        if (!file_exists($outputFilePath)) {
-            $app->abort(404);
+            $app['session']->set('download', [$outputFilePath, $downloadFileName]);
+
+            return $app->redirect($app['url_generator']->generate('homepage'));
+
+        } catch (Exception $e) {
+            $app['session']->getFlashBag()->add('danger', $app['translator']->trans($e->getMessage()));
         }
-
-        $downloadFileName = sprintf('%s.%s', pathinfo($audioFile->getClientOriginalName(), PATHINFO_FILENAME), $data['output_format']);
-        return $app
-            ->sendFile($outputFilePath)
-            ->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, $downloadFileName)
-        ;
     }
 
     return $app['twig']->render('index.html.twig', [
         'form' => $form->createView(),
+        'to_be_downloaded' => $app['session']->get('download'),
     ]);
 })
 ->bind('homepage')
+;
+
+$app->get('/download', function () use ($app) {
+    if (list($outputFilePath, $downloadFileName) = $app['session']->get('download')) {
+        $app['session']->remove('download');
+
+        return $app
+            ->sendFile($outputFilePath)
+            ->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, $downloadFileName)
+            ;
+    }
+
+    return $app->redirect($app['url_generator']->generate('homepage'));
+})
+->bind('download')
 ;
 
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {

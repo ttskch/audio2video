@@ -35,17 +35,31 @@ $(function () {
     // index
     // ------------------------------
 
+    // is-loading config.
+    $('#convert-form').on('submit', function () {
+        $.isLoading({
+            'class': "fa fa-spinner fa-spin",
+        });
+    });
+
     // advanced settings switcher.
     var $sw = $('#advanced-switcher');
     $sw.on('click', function () {
         $('#advanced-settings').slideToggle(300);
         $sw.toggleClass('active');
+
+        // set hidden field.
+        var $hidden = $('#convert-form [name*="show_advanced"]');
+        $hidden.val($hidden.val() == 1 ? 0 : 1);
     });
 
     // tab switcher.
     $('#tab-switcher a').on('click', function (e) {
         e.preventDefault();
         $(this).tab('show');
+
+        // set hidden field.
+        $('#convert-form [name*="selected_tab"]').val($(this).attr('href'));
     });
 
     // color previewer.

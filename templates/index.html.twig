@@ -55,5 +55,14 @@
         </div>
     </div>
     {{ form_rest(form) }}
+{% endblock %}
 
+{% block scripts %}
+    <script src="https://cdn.rawgit.com/hekigan/is-loading/master/jquery.isloading.min.js"></script>
+
+    {% if to_be_downloaded %}
+        <script>
+            location.href = '{{ url('download') }}';
+        </script>
+    {% endif %}
 {% endblock %}
