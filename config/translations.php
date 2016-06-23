@@ -17,6 +17,8 @@ $app['translator.domains'] = [
             'advanced_settings' => '詳細設定',
             'use_image_file' => '画像ファイルを使う',
             'generate_image' => '画像を生成する',
+            'audio_duration_warning' => '再生時間が140秒を超える音声ファイルは入力できません',
+            'exception_too_long_duration' => '音声ファイルの再生時間が140秒を超えていたため変換に失敗しました。',
         ],
         'en' => [
             'index_subtitle' => 'Convert your audio file to video file',
@@ -25,6 +27,8 @@ $app['translator.domains'] = [
             'advanced_settings' => 'Advanced',
             'use_image_file' => 'Use image file',
             'generate_image' => 'Generate image',
+            'audio_duration_warning' => 'Duration time of audio file is allowed up to 140 sec',
+            'exception_too_long_duration' => 'Duration time of audio file was over 140 sec.',
         ],
     ],
 ];

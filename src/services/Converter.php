@@ -39,6 +39,10 @@ class Converter
         $this->ensureSuccessful($process);
         $duration = floatval(json_decode($process->getOutput())->streams[0]->duration);
 
+        if ($duration > 140) {
+            throw new \Exception('exception_too_long_duration');
+        }
+
         // get the required number of images.
         $frameNum = intval(ceil($duration * $this->frameRate));
 
