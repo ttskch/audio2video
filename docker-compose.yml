@@ -1,0 +1,15 @@
+version: '2'
+services:
+  nginx:
+    build: ./docker/nginx
+    ports:
+#      - '8888:80'
+      - '80:80'
+    depends_on:
+      - php
+    volumes:
+      - .:/usr/share/nginx/html # for assets
+  php:
+    build: ./docker/php
+    volumes:
+      - .:/var/www/html # for php scripts

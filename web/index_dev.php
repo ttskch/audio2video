@@ -7,10 +7,11 @@ use Symfony\Component\Debug\Debug;
 /*if (isset($_SERVER['HTTP_CLIENT_IP'])
     || isset($_SERVER['HTTP_X_FORWARDED_FOR'])
     || !in_array(@$_SERVER['REMOTE_ADDR'], array('127.0.0.1', 'fe80::1', '::1'))
-) {
+) {*/
+if (!preg_match('/:8888$/', $_SERVER['HTTP_HOST'])) {
     header('HTTP/1.0 403 Forbidden');
     exit('You are not allowed to access this file. Check '.basename(__FILE__).' for more information.');
-}*/
+}
 
 if (preg_match('/\.(png|jpg|jpeg|gif|css|js|map|pdf|ico|ttf|woff|woff2)(\?.+)?$/', $_SERVER['REQUEST_URI'])) {
     return false;

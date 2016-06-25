@@ -14,12 +14,21 @@ RUN apt-get install -y ffmpeg libavcodec-extra imagemagick
 RUN apt-get install -y php7.0 php7.0-intl php7.0-mcrypt php7.0-xml php7.0-mbstring php7.0-opcache php-imagick
 
 # config php
-RUN sed -i -E "s/;date\.timezone =/date.timezone = Asia\/Tokyo/" /etc/php/7.0/cli/php.ini
-RUN sed -i -E "s/;mbstring\.language = Japanese/mbstring.language = Japanese/" /etc/php/7.0/cli/php.ini
-RUN sed -i -E "s/;mbstring\.internal_encoding =/mbstring.internal_encoding = UTF-8/" /etc/php/7.0/cli/php.ini
+RUN sed -i -E "s/;date\.timezone =/date.timezone = Asia\/Tokyo/" /etc/php/7.0/fpm/php.ini
+RUN sed -i -E "s/;mbstring\.language = Japanese/mbstring.language = Japanese/" /etc/php/7.0/fpm/php.ini
+RUN sed -i -E "s/;mbstring\.internal_encoding =/mbstring.internal_encoding = UTF-8/" /etc/php/7.0/fpm/php.ini
 
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php && ln -sf /composer.phar /usr/local/bin/composer
 
 # tweak /etc/hosts for port forwarding for 0.0.0.0:8888->8888/tcp
 RUN echo "0.0.0.0 localhost" >> /etc/hosts
+
+# config php7.0-fpm
+RUN sed -i -E "s/listen = /;listen = /" /etc/php/7.0/fpm/pool.d/www.conf
+RUN echo "listen = :::9000" >> /etc/php/7.0/fpm/pool.d/www.conf
+
+WORKDIR /var/www/html
+
+EXPOSE 9000
+CMD service php7.0-fpm start && tail -f /dev/null
