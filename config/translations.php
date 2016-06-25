@@ -11,8 +11,8 @@ $app['translator.domains'] = [
             'Convert' => '変換',
 
             'index_subtitle' => '音声ファイルを動画ファイルに変換',
-            'meta_description' => 'mp3などの音声ファイルを、静止画付きの動画ファイルに変換することができます。Twitterへ音声ファイルの投稿などにご活用ください。',
-            'lead_description' => 'mp3などの音声ファイルを、静止画付きの動画ファイルに変換することができます。Twitterへ音声ファイルの投稿などにご活用ください 😃',
+            'meta_description' => 'mp3などの音声ファイルを、静止画付きの動画ファイルに変換することができます。Twitterへの音声ファイルの投稿などにご活用ください。',
+            'lead_description' => 'mp3などの音声ファイルを、静止画付きの動画ファイルに変換することができます。Twitterへの音声ファイルの投稿などにご活用ください 😃',
             'advanced_settings' => '詳細設定',
             'use_image_file' => '画像ファイルを使う',
             'generate_image' => '画像を生成する',
