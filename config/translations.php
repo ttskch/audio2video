@@ -21,8 +21,8 @@ $app['translator.domains'] = [
         ],
         'en' => [
             'index_subtitle' => 'Convert your audio file to video file',
-            'meta_description' => "You can convert audio file like mp3 into an audio-only movie file. It's maybe useful fot attaching it to your tweets.",
-            'lead_description' => "You can convert audio file like mp3 into an audio-only movie file. It's maybe useful fot attaching it to your tweets :)",
+            'meta_description' => "You can convert audio file like mp3 into an audio-only video file. It's maybe useful fot attaching it to your tweets.",
+            'lead_description' => "You can convert audio file like mp3 into an audio-only video file. It's maybe useful fot attaching it to your tweets :)",
             'advanced_settings' => 'Advanced',
             'use_image_file' => 'Use image file',
             'generate_image' => 'Generate image',
