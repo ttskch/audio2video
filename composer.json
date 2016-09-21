@@ -38,7 +38,7 @@
         "run": [
             "composer run-script post-install-cmd",
             "echo 'Started web server on http://0.0.0.0:8888'",
-            "php -S 0.0.0.0:8888 -t web web/index_dev.php"
+            "php -S 0.0.0.0:8888 -t web"
         ],
         "post-install-cmd": [
             "ln -sf ../../vendor/twbs/bootstrap/dist web/lib/bootstrap",

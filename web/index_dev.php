@@ -13,10 +13,6 @@ if (!preg_match('/:8888$/', $_SERVER['HTTP_HOST'])) {
     exit('You are not allowed to access this file. Check '.basename(__FILE__).' for more information.');
 }
 
-if (preg_match('/\.(png|jpg|jpeg|gif|css|js|map|pdf|ico|ttf|woff|woff2)(\?.+)?$/', $_SERVER['REQUEST_URI'])) {
-    return false;
-}
-
 require_once __DIR__.'/../vendor/autoload.php';
 
 Debug::enable();
