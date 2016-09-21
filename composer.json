@@ -27,7 +27,7 @@
         "fortawesome/font-awesome": "^4.6"
     },
     "autoload": {
-        "psr-4": { "Tch\\A2V\\": "src/services" }
+        "psr-4": { "Ttskch\\A2V\\": "src/services" }
     },
     "extra": {
         "branch-alias": {
