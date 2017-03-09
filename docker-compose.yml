@@ -1,15 +1,24 @@
 version: '2'
 services:
   nginx:
-    build: ./docker/nginx
-    ports:
+    image: ttskch/nginx-for-silex
+    container_name: audio2video_nginx
+#    ports:
 #      - '8888:80'
-      - '80:80'
+#      - '80:80'
     depends_on:
       - php
     volumes:
-      - .:/usr/share/nginx/html # for assets
+      - ./docker/nginx:/etc/nginx/conf.d
+      - .:/var/www
+    environment:
+      VIRTUAL_HOST: audio2video.me
   php:
-    build: ./docker/php
+    image: ttskch/php-fpm-for-audio2video
+    container_name: audio2video_php
     volumes:
-      - .:/var/www/html # for php scripts
+      - .:/var/www
+networks:
+  default:
+    external:
+      name: nginxproxy_default
