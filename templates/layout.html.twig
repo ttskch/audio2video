@@ -3,19 +3,31 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% spaceless %}
-        <title>
-            {% block subtitle %}{% endblock %}
-            {% if block('subtitle') is not empty %} | {% endif %}
-            {% block site_title %}audio2video.me{% endblock %}
-        </title>
-    {% endspaceless %}
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>
+        {% block title %}{#
+            #}{% block subtitle %}{% endblock %}{#
+            #}{% if block('subtitle') is not empty %} | {% endif %}{#
+            #}{% block site_title %}audio2video.me{% endblock %}{#
+        #}{% endblock %}
+    </title>
+
     <meta name="keywords" content="wav, mp3, m4a, aac, wma, mp4, m4v, avi, wmv, convert, generate, 変換, 生成, mp3tube">
     <meta name="description" content="{{ 'meta_description' | trans }}">
+    <link rel="canonical" href="{{ global.request.uri }}">
+
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
     <link href="{{ asset('lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <meta property="og:title" content="{{ block('title') }}">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="{{ global.request.uri }}">
+    <meta property="og:site_name" content="{{ block('title') }}">
+    <meta property="fb:admins" content="844117658995968">
+    <meta property="fb:app_id" content="186549258503363">
+    <meta property="og:description" content="{{ 'meta_description' | trans }}">
 
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -43,8 +55,8 @@
     <div class="container">
         <div id="content">
             {% block flashes %}
-                {% if app.session.flashbag.peekAll|length > 0 %}
-                    {% for type, messages in app.session.flashbag.all %}
+                {% if global.session.flashbag.peekAll|length > 0 %}
+                    {% for type, messages in global.session.flashbag.all %}
                         {% for message in messages %}
                             <div class="row">
                                 <div class="col-sm-12">
@@ -70,6 +82,7 @@
                     <a href="http://ttskch.github.io" target="_blank"><b>ttskch</b></a> <i class="fa fa-copyright"></i> 2016 / <a href="https://github.com/ttskch/audio2video" target="_blank"><i class="fa fa-github"></i></a>
                 </div>
             {% endblock %}
+            <div class="hidden-sm hidden-md hidden-lg" style="height:50px;"></div>
         </div>
     </div>
 
