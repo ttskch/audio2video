@@ -13,11 +13,15 @@ services:
       - .:/var/www
     environment:
       VIRTUAL_HOST: audio2video.me
+      LETSENCRYPT_HOST: mojiemoji.ttskch.com
+      LETSENCRYPT_EMAIL: kanemoto.takashi+mojiemoji@gmail.com
+    restart: always
   php:
     image: ttskch/php-fpm-for-audio2video
     container_name: audio2video_php
     volumes:
       - .:/var/www
+    restart: always
 networks:
   default:
     external:
