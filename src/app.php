@@ -10,6 +10,7 @@ use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\ValidatorServiceProvider;
+use Symfony\Component\Form\FormRenderer;
 
 // use the top priority Accept-Language as default locale.
 $lang = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE'])[0];
@@ -34,6 +35,13 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
     // add custom globals, filters, tags, ...
 
     return $twig;
+});
+
+// @see https://github.com/silexphp/Silex/issues/1579#issuecomment-352999675
+$app->extend('twig.runtimes', function ($runtimes, $app) {
+    return array_merge($runtimes, [
+        FormRenderer::class => 'twig.form.renderer',
+    ]);
 });
 
 $app->extend('translator', function ($translator, $app) {
