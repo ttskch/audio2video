@@ -1,0 +1,25 @@
+{
+  "scripts": {
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production",
+    "postinstall": "npm run build"
+  },
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.17.0",
+    "autoprefixer": "^7.2.3",
+    "bootstrap": "^4.0.0",
+    "copy-webpack-plugin": "^4.3.1",
+    "font-awesome": "^4.7.0",
+    "is-loading": "^2.0.4",
+    "jquery": "^3.2.1",
+    "node-sass": "^4.7.2",
+    "popper.js": "^1.12.9",
+    "postcss-loader": "^2.0.9",
+    "sass-loader": "^6.0.6"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "ios >= 8"
+  ]
+}

@@ -1,0 +1,16 @@
+Audio file: 音声ファイル
+Output format: 出力動画のファイル形式
+Frame rate (fps): 出力動画のフレームレート (fps)
+Image file: 画像ファイル
+Resolution: 解像度
+Background Color: 背景色
+Convert: 変換
+
+index_subtitle: 音声ファイルを5秒で動画ファイルに変換
+meta_description: mp3などの音声ファイルを、静止画付きの動画ファイルに変換することができます。Twitterへの音声ファイルの投稿などにご活用ください。
+lead_description: 音声ファイルを5秒で動画ファイルに変換
+advanced_settings: 詳細設定
+use_image_file: 画像ファイルを使う
+generate_image: 画像を生成する
+audio_duration_warning: 再生時間が140秒を超える音声ファイルは入力できません
+exception_too_long_duration: 音声ファイルの再生時間が140秒を超えていたため変換に失敗しました

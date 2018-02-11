@@ -1,0 +1,8 @@
+index_subtitle: Convert audio file to video file just in 5 sec
+meta_description: You can convert audio file like mp3 into an audio-only video file. It's maybe useful for attaching it to your tweets.
+lead_description: Convert audio file to video file just in 5 sec
+advanced_settings: Advanced
+use_image_file: Use image file
+generate_image: Generate image
+audio_duration_warning: Duration time of audio file is allowed up to 140 sec
+exception_too_long_duration: Duration time of audio file was over 140 sec

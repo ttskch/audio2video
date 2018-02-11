@@ -1,0 +1,7 @@
+app.locale_redirection:
+    path: /
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::redirectAction
+    defaults:
+        route: home_index
+        _locale: '%locale%'
+        permanent: true

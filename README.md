@@ -10,6 +10,8 @@ CLI version: [ttskch/audio2video-cli](https://github.com/ttskch/audio2video-cli)
 
 ### Requirements
 
+* PHP 7.1.3+
+* npm
 * Docker
 
 ### Installation

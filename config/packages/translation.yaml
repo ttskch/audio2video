@@ -1,0 +1,7 @@
+framework:
+    default_locale: '%locale%'
+    translator:
+        paths:
+            - '%kernel.project_dir%/translations'
+        fallbacks:
+            - 'en'  # to output directly some English natural words as catalogue id

@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block subtitle %}{{ 'index_subtitle'|trans }}{% endblock %}
+
+{% block content %}
+    {{ form_start(form, { name: 'form', attr: { id: 'convert-form' } }) }}
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                {{ form_row(form.audioFile) }}
+                <span class="form-text text-muted"><i class="fa fa-exclamation-triangle"></i> {{ 'audio_duration_warning'|trans }}</span>
+            </div>
+            <div class="form-group mb30">
+                <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-refresh"></i> {{ 'Convert'|trans }}</button>
+                <span id="advanced-switcher" class="btn btn-outline-secondary float-right {% if form.showAdvanced.vars.value %}active{% endif %}">{{ 'advanced_settings'|trans }}</span>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div id="advanced-settings" {% if not form.showAdvanced.vars.value %}style="display: none;"{% endif %}>
+                {{ form_row(form.outputFormat, { attr: { class: 'form-check-inline'} }) }}
+                {{ form_row(form.frameRate) }}
+
+                <ul id="tab-switcher" class="nav nav-tabs mb-3">
+                    <li class="nav-item">
+                        <a href="#tab1" class="nav-link {% if form.selectedTab.vars.value == '#tab1' %}active{% endif %}">{{ 'use_image_file'|trans }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#tab2" class="nav-link {% if form.selectedTab.vars.value == '#tab2' %}active{% endif %}">{{ 'generate_image'|trans }}</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="tab1" class="tab-pane {% if form.selectedTab.vars.value == '#tab1' %}active{% endif %}">
+                        {{ form_row(form.imageFile) }}
+                    </div>
+                    <div id="tab2" class="tab-pane {% if form.selectedTab.vars.value == '#tab2' %}active{% endif %}">
+                        {{ form_row(form.imageResolution) }}
+
+                        <div class="form-group">
+                            {{ form_label(form.imageColor) }}
+                            {{ form_errors(form.imageColor) }}
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">#</span>
+                                </div>
+                                {{ form_widget(form.imageColor) }}
+                                <div class="input-group-append">
+                                    <span class="input-group-text" id="color-preview">&nbsp;&nbsp;&nbsp;</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ form_rest(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% if download_ready %}
+        <script>
+            // for aborting isLoading
+            location.href = '{{ path('home_download') }}';
+        </script>
+    {% endif %}
+{% endblock %}

@@ -1,5 +1,19 @@
-/vendor/
+node_modules
+package-lock.json
 composer.lock
-/components/
-/web/lib/
-!/web/lib/.gitkeep
+
+###> symfony/framework-bundle ###
+.env
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/web-server-bundle ###
+.web-server-pid
+###< symfony/web-server-bundle ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###
