@@ -15,7 +15,7 @@
                 <span id="advanced-switcher" class="btn btn-outline-secondary float-right {% if form.showAdvanced.vars.value %}active{% endif %}">{{ 'advanced_settings'|trans }}</span>
             </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6 mt-3 mt-sm-0">
             <div id="advanced-settings" {% if not form.showAdvanced.vars.value %}style="display: none;"{% endif %}>
                 {{ form_row(form.outputFormat, { attr: { class: 'form-check-inline'} }) }}
                 {{ form_row(form.frameRate) }}

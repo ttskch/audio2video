@@ -1,15 +1,3 @@
-default_locale_redirection:
-    path: '/%locale%/{ignore}'
-    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
-    requirements:
-        ignore: .*
-    defaults:
-        path: /
-        permanent: true
-
 controllers:
     resource: ../../src/Controller/
     type: annotation
-    prefix: '/{_locale}/'
-    requirements:
-        _locale: ja|en|.*
