@@ -23,7 +23,7 @@ RUN apk update \
     && rm -rf /var/cache/apk/*
 
 RUN \
-    sed -i -E "s/APP_ENV=dev/APP_ENV=prod/" .env
+    sed -i -E "s/APP_ENV=dev/APP_ENV=prod/" .env \
     && composer install --no-interaction
 
 COPY docker/php.ini $PHP_INI_DIR/
