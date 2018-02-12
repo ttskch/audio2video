@@ -6,6 +6,7 @@ use App\Entity\ConvertCriteria;
 use App\Form\ConvertType;
 use App\Service\Converter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +15,8 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
 /**
- * @Route("/{_locale}", name="home_")
+ * @Route("/", name="home_")
+ * @Template()
  */
 class HomeController extends Controller
 {
@@ -38,10 +40,10 @@ class HomeController extends Controller
             // don't redirect to 'home_download' so that can inform frontend that conversion is complete
         }
 
-        return $this->render('home/index.html.twig', [
+        return [
             'form' => $form->createView(),
             'download_ready' => boolval($session->get('download')),
-        ]);
+        ];
     }
 
     /**
@@ -57,6 +59,6 @@ class HomeController extends Controller
             ;
         }
 
-        return $this->redirectToRoute('home_index');
+        return [];
     }
 }
