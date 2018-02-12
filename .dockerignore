@@ -1,1 +1,7 @@
 .git
+public/bundles
+var
+vendor
+node_modules
+package-lock.json
+composer.lock

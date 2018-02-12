@@ -5,7 +5,7 @@ RUN apk update \
     && apk add ffmpeg \
     \
     # install imagemagick, imagick and dependencies
-    && apk add imagemagick \
+    && apk add imagemagick imagemagick-dev \
     # just to install imagick
     && apk add autoconf g++ make libtool \
     # to use phpize and pecl
@@ -17,9 +17,12 @@ RUN apk update \
     \
     # instal utils
     && apk add curl \
+    && apk add nodejs-npm \
     \
     # remove caches to decrease image size
     && rm -rf /var/cache/apk/*
+
+RUN composer install --no-interaction
 
 COPY docker/php.ini $PHP_INI_DIR/
 COPY docker/nginx.conf $NGINX_CONFD_DIR/audio2video.me.conf
