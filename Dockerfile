@@ -22,7 +22,9 @@ RUN apk update \
     # remove caches to decrease image size
     && rm -rf /var/cache/apk/*
 
-RUN composer install --no-interaction
+RUN \
+    sed -i -E "s/APP_ENV=dev/APP_ENV=prod/" .env
+    && composer install --no-interaction
 
 COPY docker/php.ini $PHP_INI_DIR/
 COPY docker/nginx.conf $NGINX_CONFD_DIR/audio2video.me.conf

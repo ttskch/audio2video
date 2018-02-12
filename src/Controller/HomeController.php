@@ -16,12 +16,12 @@ use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * @Route("/", name="home_")
- * @Template()
  */
 class HomeController extends Controller
 {
     /**
      * @Route("/", name="index")
+     * @Template()
      */
     public function index(Request $request, Converter $converter, SessionInterface $session, TranslatorInterface $translator)
     {
@@ -59,6 +59,6 @@ class HomeController extends Controller
             ;
         }
 
-        return [];
+        return $this->redirectToRoute('home_index');
     }
 }
