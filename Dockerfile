@@ -1,6 +1,8 @@
 FROM ttskch/nginx-php-fpm-heroku
 
-RUN apk update \
+RUN \
+    apk update \
+    \
     # install ffmpeg
     && apk add ffmpeg \
     \
@@ -20,10 +22,10 @@ RUN apk update \
     && apk add nodejs-npm \
     \
     # remove caches to decrease image size
-    && rm -rf /var/cache/apk/*
-
-RUN \
-    sed -i -E "s/APP_ENV=dev/APP_ENV=prod/" .env \
+    && rm -rf /var/cache/apk/* \
+    \
+    # set to prod to APP_ENV and re-do composer install
+    && sed -i -E "s/APP_ENV=dev/APP_ENV=prod/" .env \
     && composer install --no-interaction
 
 COPY docker/php.ini $PHP_INI_DIR/
