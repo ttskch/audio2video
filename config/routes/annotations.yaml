@@ -1,3 +1,10 @@
 controllers:
     resource: ../../src/Controller/
     type: annotation
+    host: '{_locale}{dot_or_none}%domain%'
+    defaults:
+        _locale: ~
+        dot_or_none: .
+    requirements:
+        _locale: ja|en|
+        dot_or_none: \.?

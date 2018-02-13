@@ -42,12 +42,12 @@
             <a class="navbar-brand" href="{{ path('home_index') }}">
                 <span><i class="fa fa-play-circle"></i> {{ block('site_title') }}</span>
             </a>
-            {#<div class="collapse navbar-collapse" id="navbar-collapse-1">#}
-                {#<ul class="navbar-nav ml-auto">#}
-                    {#<li class="nav-item"><a href="{{ path('home_index', {_locale: 'ja'}) }}" class="nav-link {% if app.request.locale == 'ja' %}active{% endif %}">日本語</a></li>#}
-                    {#<li class="nav-item"><a href="{{ path('home_index', {_locale: 'en'}) }}" class="nav-link {% if app.request.locale == 'en' %}active{% endif %}">English</a></li>#}
-                {#</ul>#}
-            {#</div>#}
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a href="{{ path('home_index', {_locale: 'ja'}) }}" class="nav-link {% if app.request.locale == 'ja' %}active{% endif %}">日本語</a></li>
+                    <li class="nav-item"><a href="{{ path('home_index', {_locale: 'en'}) }}" class="nav-link {% if app.request.locale == 'en' %}active{% endif %}">English</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
     <div id="eyecatch">
