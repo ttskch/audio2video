@@ -26,12 +26,12 @@ $ composer install
 ### Running
 
 ```bash
-$ docker run -p 8888:8888 -v $(pwd):/docroot {tag} 
+$ docker run -p 8888:8888 -v $(pwd):/docroot {tag}
 ```
 
 Then browse http://localhost:8888/index_dev.php
 
-### Debugging in Docker container
+#### Debugging in Docker container
 
 ```bash
 $ docker run -p 8888:8888 -v $(pwd):/docroot -it {tag} sh
