@@ -3,5 +3,5 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     form_themes:
-        - 'ttskch_bootstrap_4_horizontal_layout.html.twig'
-        - 'ttskch_bootstrap_4_layout.html.twig'  # to be the default theme
+        - 'form_theme/my_bootstrap_4_layout.html.twig'
+#        - 'form_theme/my_bootstrap_4_horizontal_layout.html.twig'

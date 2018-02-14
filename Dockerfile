@@ -24,8 +24,9 @@ RUN \
     # remove caches to decrease image size
     && rm -rf /var/cache/apk/* \
     \
-    # set to prod to APP_ENV and re-do composer install
+    # tweak to set env to prod, and re-do composer install
     && sed -i -E "s/APP_ENV=dev/APP_ENV=prod/" .env \
+    && mv config/routes/annotations.yaml.prod config/routes/annotations.yaml \
     && composer install --no-interaction \
     && chmod -R a+w $DOCROOT
 

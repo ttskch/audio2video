@@ -15,15 +15,15 @@
     <link rel="canonical" href="{{ app.request.uri }}">
 
     <link rel="apple-touch-icon" href="{{ asset('build/images/logo.png') }}" type="image/png">
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('build/images/logo.png') }}" type="image/x-icon">
 
     <meta property="og:title" content="{{ block('title') }}">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="">
+    <meta property="og:image" content="{{ absolute_url(asset('build/images/logo.png')) }}">
     <meta property="og:url" content="{{ app.request.uri }}">
     <meta property="og:site_name" content="{{ block('title') }}">
-    <meta property="fb:admins" content="844117658995968">
-    <meta property="fb:app_id" content="186549258503363">
+    <meta property="fb:admins" content="">
+    <meta property="fb:app_id" content="">
     <meta property="og:description" content="{{ block('subtitle') }}">
 
     <link href="{{ asset('build/vendors.css') }}" rel="stylesheet">
@@ -42,6 +42,9 @@
             <a class="navbar-brand" href="{{ path('home_index') }}">
                 <span><i class="fa fa-play-circle"></i> {{ block('site_title') }}</span>
             </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <i class="fa fa-bars"></i>
+            </button>
             <div class="collapse navbar-collapse" id="navbar-collapse-1">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a href="{{ path('home_index', {_locale: 'ja'}) }}" class="nav-link {% if app.request.locale == 'ja' %}active{% endif %}">日本語</a></li>
@@ -56,7 +59,7 @@
         </div>
     </div>
     <div class="container">
-        <div id="content" class="mt-4 mb-5">
+        <div id="content" class="my-4 mb-5">
             {% block flashes %}
                 {% if app.session.flashbag.peekAll|length > 0 %}
                     {% for type, messages in app.session.flashbag.all %}

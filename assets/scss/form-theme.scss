@@ -1,0 +1,25 @@
+@import "variables";
+
+.form-group {
+    > .form-control-label,
+    > .col-form-label,
+    // for horizontal
+    > .row > .col-form-label {
+        font-weight: bolder;
+
+        &.required:after {
+            content: " *";
+            color: $danger;
+        }
+    }
+
+    .row [class*="col-"] div[inline] {
+        margin-top: 0.2em;
+    }
+
+    .form-control-file {
+        border: $input-border-width solid $input-border-color;
+        border-radius: $input-border-radius;
+        padding: $input-padding-y 0.4em;
+    }
+}

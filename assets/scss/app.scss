@@ -1,9 +1,17 @@
 @import "variables";
+@import "form-theme";
+@import "~is-loading/src/css/index";
 
 html[lang="ja"] body {
-    font-family: "Lato", Emoji, Arial, "ヒラギノ角ゴPro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", sans-serif;
-    letter-spacing: 0.03em;
-    color: #444;
+    // font-size of html will be the base font-size because of "$font-size-base:1rem"
+    font-size: 14px;
+
+    // for beauty in Japanese env
+    &[lang="ja"] body {
+        font-family: "Lato", Emoji, Arial, "ヒラギノ角ゴPro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", sans-serif;
+        letter-spacing: 0.05em;
+        color: #444;
+    }
 }
 
 #eyecatch {
@@ -40,6 +48,6 @@ html[lang="ja"] body {
     }
 }
 
-footer {
-    border-top: 1px solid #ccc;
+#footer {
+    border-top: 1px solid darken($light, 10%);
 }

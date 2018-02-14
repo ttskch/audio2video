@@ -46,6 +46,9 @@ class ConvertType extends AbstractType
                 ],
                 'expanded' => true,
                 'multiple' => false,
+                'attr' => [
+                    'inline' => true,
+                ],
             ])
             ->add('frameRate', IntegerType::class, [
                 'required' => false,

@@ -1,5 +1,10 @@
 import isLoading from 'is-loading';
 
+$('select').select2({
+    theme: 'bootstrap4',
+    width: '100%',
+});
+
 $('[data-toggle="tooltip"]').tooltip();
 
 // isLoading config.

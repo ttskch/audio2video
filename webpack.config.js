@@ -18,12 +18,13 @@ Encore
         './assets/scss/app.scss',
     ])
     .createSharedEntry('vendors', [
+        // js
         'jquery',
         'bootstrap',
         'popper.js',
-        './public/bundles/ttskchbs4formthemeadjuster/js/form.js',
-        './public/bundles/ttskchbs4formthemeadjuster/scss/form.scss',
-        'is-loading/src/css/index.scss',
+        'select2',
+        // styles
+        './assets/scss/vendors.scss',
     ])
     .addPlugin(new copyPlugin([{
         from: './assets/images',

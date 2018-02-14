@@ -1,0 +1,48 @@
+--- my_bootstrap_4_horizontal_layout.html.twig	2018-02-14 00:05:23.000000000 +0900
++++ ../../vendor/symfony/twig-bridge/Resources/views/Form/bootstrap_4_horizontal_layout.html.twig	2018-01-19 07:19:33.000000000 +0900
+@@ -1,6 +1,4 @@
+-{# copy-and-pase from bootstrap_4_horizontal_layout.html.twig and tweak something #}
+-
+-{% use "form_theme/my_bootstrap_4_layout.html.twig" %}
++{% use "bootstrap_4_layout.html.twig" %}
+ 
+ {# Labels #}
+ 
+@@ -17,8 +15,7 @@
+ {%- endblock form_label %}
+ 
+ {% block form_label_class -%}
+-    {#col-sm-2#}
+-    col-sm-3{# added #}
++col-sm-2
+ {%- endblock form_label_class %}
+ 
+ {# Rows #}
+@@ -33,7 +30,7 @@
+                 {{- form_widget(form) -}}
+                 {{- form_errors(form) -}}
+             </div>
+-            {##}</div>
++    {##}</div>
+     {%- endif -%}
+ {%- endblock form_row %}
+ 
+@@ -46,7 +43,7 @@
+                 {{- form_errors(form) -}}
+             </div>
+         </div>
+-        {##}</fieldset>
++{##}</fieldset>
+ {%- endblock fieldset_form_row %}
+ 
+ {% block submit_row -%}
+@@ -68,8 +65,7 @@
+ {%- endblock reset_row %}
+ 
+ {% block form_group_class -%}
+-    {#col-sm-10#}
+-    col-sm-9{# added #}
++col-sm-10
+ {%- endblock form_group_class %}
+ 
+ {% block checkbox_row -%}

@@ -1,0 +1,119 @@
+--- my_bootstrap_4_layout.html.twig	2018-02-14 00:06:59.000000000 +0900
++++ ../../vendor/symfony/twig-bridge/Resources/views/Form/bootstrap_4_layout.html.twig	2018-01-19 07:19:33.000000000 +0900
+@@ -1,5 +1,3 @@
+-{# copy-and-pase from bootstrap_4_layout.html.twig and tweak something #}
+-
+ {% use "bootstrap_base_layout.html.twig" %}
+ 
+ {# Widgets #}
+@@ -76,8 +74,7 @@
+     {%- set attr = attr|merge({class: (attr.class|default('') ~ ' form-check-input')|trim}) -%}
+     {% if 'checkbox-inline' in parent_label_class %}
+         {{- form_label(form, null, { widget: parent() }) -}}
+-    {#{% elseif 'form-check-inline' in parent_label_class %}#}
+-    {% elseif parent_attr.inline|default(false) %}{# added #}
++    {% elseif 'form-check-inline' in parent_label_class %}
+         <div class="form-check{{ not valid ? ' form-control is-invalid' }} form-check-inline">
+             {{- form_label(form, null, { widget: parent() }) -}}
+         </div>
+@@ -93,10 +90,6 @@
+     {%- set attr = attr|merge({class: (attr.class|default('') ~ ' form-check-input')|trim}) -%}
+     {%- if 'radio-inline' in parent_label_class -%}
+         {{- form_label(form, null, { widget: parent() }) -}}
+-    {% elseif parent_attr.inline|default(false) %}{# added #}
+-        <div class="form-check{{ not valid ? ' form-control is-invalid' }} form-check-inline">{# added #}
+-            {{- form_label(form, null, { widget: parent() }) -}}{# added #}
+-        </div>{# added #}
+     {%- else -%}
+         <div class="form-check{{ not valid ? ' form-control is-invalid' }}">
+             {{- form_label(form, null, { widget: parent() }) -}}
+@@ -106,10 +99,8 @@
+ 
+ {% block choice_widget_expanded -%}
+     {% if '-inline' in label_attr.class|default('') -%}
+-        {# added parent_attr #}
+         {%- for child in form %}
+             {{- form_widget(child, {
+-                parent_attr: attr|default([]),
+                 parent_label_class: label_attr.class|default(''),
+                 translation_domain: choice_translation_domain,
+                 valid: valid,
+@@ -121,9 +112,7 @@
+         {%- endif -%}
+         <div {{ block('widget_container_attributes') }}>
+             {%- for child in form %}
+-                {# added parent_attr #}
+                 {{- form_widget(child, {
+-                    parent_attr: attr|default([]),
+                     parent_label_class: label_attr.class|default(''),
+                     translation_domain: choice_translation_domain,
+                     valid: true,
+@@ -138,8 +127,7 @@
+ {% block form_label -%}
+     {%- if compound is defined and compound -%}
+         {%- set element = 'legend' -%}
+-        {#{%- set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' col-form-legend')|trim}) -%}#}
+-        {%- set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' col-form-label')|trim}) -%}{# added #}
++        {%- set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' col-form-legend')|trim}) -%}
+     {%- else -%}
+         {%- set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' form-control-label')|trim}) -%}
+     {%- endif -%}
+@@ -159,15 +147,15 @@
+         {%- if label is not same as(false) and label is empty -%}
+             {%- if label_format is not empty -%}
+                 {%- set label = label_format|replace({
+-                '%name%': name,
+-                '%id%': id,
++                    '%name%': name,
++                    '%id%': id,
+                 }) -%}
+             {%- else -%}
+                 {%- set label = name|humanize -%}
+             {%- endif -%}
+         {%- endif -%}
+         <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
+-        {{- widget|raw }} {{ label is not same as(false) ? (translation_domain is same as(false) ? label : label|trans({}, translation_domain)) -}}
++            {{- widget|raw }} {{ label is not same as(false) ? (translation_domain is same as(false) ? label : label|trans({}, translation_domain)) -}}
+         </label>
+     {%- endif -%}
+ {%- endblock checkbox_radio_label %}
+@@ -179,9 +167,9 @@
+         {%- set element = 'fieldset' -%}
+     {%- endif -%}
+     <{{ element|default('div') }} class="form-group">
+-    {{- form_label(form) -}}
+-    {{- form_widget(form) -}}
+-    {{- form_errors(form) -}}
++        {{- form_label(form) -}}
++        {{- form_widget(form) -}}
++        {{- form_errors(form) -}}
+     </{{ element|default('div') }}>
+ {%- endblock form_row %}
+ 
+@@ -189,19 +177,12 @@
+ 
+ {% block form_errors -%}
+     {%- if errors|length > 0 -%}
+-        <div class="{% if form is not rootform %}invalid-feedback{% else %}alert alert-danger{% endif %}">
+-            <ul class="list-unstyled mb-0">
+-                {%- for error in errors -%}
+-                    <li>{{ error.message }}</li>
+-                {%- endfor -%}
+-            </ul>
+-        </div>
++    <div class="{% if form is not rootform %}invalid-feedback{% else %}alert alert-danger{% endif %}">
++        <ul class="list-unstyled mb-0">
++            {%- for error in errors -%}
++                <li>{{ error.message }}</li>
++            {%- endfor -%}
++        </ul>
++    </div>
+     {%- endif %}
+ {%- endblock form_errors %}
+-
+-
+-{# added #}
+-{%- block submit_widget -%}
+-    {%- set attr = attr|merge({class: (attr.class|default('btn-outline-primary') ~ ' btn')|trim}) -%}
+-    {{- parent() -}}
+-{%- endblock submit_widget -%}
