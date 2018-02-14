@@ -1,5 +1,7 @@
 # audio2video
 
+[![Build Status](https://travis-ci.org/ttskch/audio2video.svg?branch=master)](https://travis-ci.org/ttskch/audio2video)
+
 Source code of http://audio2video.me
 
 ## See also

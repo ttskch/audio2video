@@ -1,0 +1,28 @@
+language: php
+sudo: false
+dist: trusty
+
+php:
+  - 7.1
+
+cache:
+  directories:
+    - vendor
+    - $HOME/.composer/cache
+    - $HOME/.npm
+
+#before_script:
+#  - composer self-update
+#  - composer update
+
+script:
+#  - ./vendor/bin/simple-phpunit --coverage-clover=coverage.clover
+  - echo "no tests yet"
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+      docker login -u "$DOCKER_USERNAME_DOCKERHUB" -p "$DOCKER_PASSWORD_DOCKERHUB";
+      docker login -u "$DOCKER_USERNAME_HEROKU" -p "$DOCKER_PASSWORD_HEROKU" registry.heroku.com;
+      docker build . -t registry.heroku.com/audio2video/web;
+      docker push registry.heroku.com/audio2video/web;
+    fi
