@@ -52,14 +52,17 @@
             "assets:install --symlink --relative %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
+            "if [ ! -f '.env' ]; then cp .env.dist .env; fi",
             "@auto-scripts",
             "npm install"
         ],
         "post-update-cmd": [
+            "if [ ! -f '.env' ]; then cp .env.dist .env; fi",
             "@auto-scripts",
             "npm install"
         ],
         "post-create-project-cmd": [
+            "if [ ! -f '.env' ]; then cp .env.dist .env; fi",
             "@auto-scripts",
             "npm install"
         ]
