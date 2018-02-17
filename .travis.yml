@@ -15,7 +15,7 @@ script:
   - docker run ${REGISTRY}/${NAME} bin/phpunit
 
 after_success:
-  - if [ "${TRAVIS_PULL_REQUEST}" == "false" ] && [ "{$TRAVIS_BRANCH}" == "wip" ]; then
+  - if [ "${TRAVIS_PULL_REQUEST}" == "false" ] && [ "{$TRAVIS_BRANCH}" == "master" ]; then
       docker login -u "${DOCKER_USERNAME}" -p "${DOCKER_PASSWORD}" ${REGISTRY}
       docker push ${REGISTRY}/${NAME}
     fi
