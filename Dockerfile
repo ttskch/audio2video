@@ -31,7 +31,7 @@ RUN \
     # tweak to set env to prod, and re-do composer install
     && sed -i -E "s/APP_ENV=dev/APP_ENV=prod/" .env \
     && mv config/routes/annotations.yaml.prod config/routes/annotations.yaml \
-    && NODE_ENV=prod composer install --no-interaction \
+    && composer install --no-interaction \
     && chmod -R a+w $DOCROOT
 
 COPY docker/php.ini $PHP_INI_DIR/
