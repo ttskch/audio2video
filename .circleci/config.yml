@@ -1,0 +1,30 @@
+version: 2
+jobs:
+  build:
+    # use physical machine
+    machine: true
+
+    environment:
+      - REGISTRY: registry.heroku.com
+      - NAME: audio2video/web
+
+    branches:
+      only:
+        - master
+
+    steps:
+      # checkout codebase
+      - checkout
+
+      - run: docker -v
+
+      # build
+      - run: docker build . -t ${REGISTRY}/${NAME}
+
+      # test
+      - run: docker run ${REGISTRY}/${NAME} bin/phpunit
+
+      # deploy
+      - run: |
+          docker login -u "${DOCKER_USERNAME}" -p "${DOCKER_PASSWORD}" ${REGISTRY}
+          docker push ${REGISTRY}/${NAME}
