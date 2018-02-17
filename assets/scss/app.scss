@@ -2,7 +2,7 @@
 @import "form-theme";
 @import "~is-loading/src/css/index";
 
-html[lang="ja"] body {
+html {
     // font-size of html will be the base font-size because of "$font-size-base:1rem"
     font-size: 14px;
 
