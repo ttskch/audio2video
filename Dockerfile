@@ -28,8 +28,10 @@ RUN \
     # remove caches to decrease image size
     && rm -rf /var/cache/apk/* \
     \
-    # tweak to set env to prod, and re-do composer install
-    && composer install --no-interaction \
+    # re-run composer install
+    # (sudo -u nonroot is required because cannot run npm install by root without --unsafe-perm)
+    && sudo -u nonroot composer install --no-interaction \
+    #  tweak to set env to prod
     && sed -i -E "s/APP_ENV=dev/APP_ENV=prod/" .env \
     && mv config/routes/annotations.yaml.prod config/routes/annotations.yaml \
     && chmod -R a+w $DOCROOT
