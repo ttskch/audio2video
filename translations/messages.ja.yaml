@@ -7,8 +7,9 @@ Background Color: 背景色
 Convert: 変換
 
 index_subtitle: 音声ファイルを5秒で動画ファイルに変換
-meta_description: mp3などの音声ファイルを、静止画付きの動画ファイルに変換することができます。Twitterへの音声ファイルの投稿などにご活用ください。
-lead_description: 音声ファイルを5秒で動画ファイルに変換
+meta_description: mp3などの音声ファイルを、静止画付きの動画ファイルに変換することができます。TwitterやFacebookへの音声ファイルの投稿などにご活用ください。
+lead: 音声ファイルを5秒で動画ファイルに変換
+lead_description: TwitterやFacebookには音声ファイルを添付することができません。<br class="d-none d-md-block">audio2video.meでは、<strong>手持ちの音声ファイルをたったのワンクリックで動画ファイルに変換</strong>することができます。<br class="d-none d-md-block">基本設定では真っ黒な動画になりますが、お好みに応じて、手持ちの画像を使ったり黒以外の色や画像サイズを指定して動画を生成することも可能です。
 advanced_settings: 詳細設定
 use_image_file: 画像ファイルを使う
 generate_image: 画像を生成する
