@@ -1,9 +1,37 @@
-index_subtitle: Convert audio file to video file just in 5 sec
+# base
 meta_description: You can convert audio file like mp3 into an audio-only video file. It's maybe useful for attaching it to your tweets or facebook posts.
-lead: Convert audio file to video file just in 5 sec
-lead_description: We can't post audio files to Twitter or Facebook.<br class="d-none d-md-block">audio2video.me allows you to <strong>convert an audio file like mp3 into an audio-only video file just by one-click.</strong><br class="d-none d-md-block">By default, you'll get a black-filled video file but you can set more detailed settings as needed.
-advanced_settings: Advanced
-use_image_file: Use image file
-generate_image: Generate image
-audio_duration_warning: Duration time of audio file is allowed up to 140 sec
-exception_too_long_duration: Duration time of audio file was over 140 sec
+eyecatch: Convert audio file to video file just in 5 sec
+subtitle:
+  index: Convert audio file to video file just in 5 sec
+  help: Help
+
+# index
+index:
+  lead:
+    heading: What's this?
+    text: We can't post audio files to Twitter or Facebook.<br class="d-none d-md-block">audio2video.me allows you to <strong>convert an audio file like mp3 into an audio-only video file just by one-click.</strong><br class="d-none d-md-block">By default, you'll get a black-filled video file but you can set more detailed settings as needed.
+  advanced_settings: Advanced
+  use_image_file: Use image file
+  generate_image: Generate image
+  audio_duration_warning: Duration time of audio file is allowed up to 140 sec
+  exception_too_long_duration: Duration time of audio file was over 140 sec
+
+# help
+help:
+  p1:
+    heading: How to use
+    text: Just choose an audio file and click "Convert" button. That's it.
+  p2:
+    heading: Advanced settings
+    text: Clickin "Advanced" button shows you more detailed settings like below.
+  table:
+    thead:
+      th1: Setting
+      th2: Description
+    tbody:
+      td1: You can choose file type of output video file.
+      td2: You can specify frame rate of output video file. But the default value "30" maybe always the best choice.
+      td3: Output video file will be filled with a still image. You can choose whether to use your own image file or generate an image file on the spot.
+      td4: You can choose an image file to fill output video file.
+      td5: You can choose the resolution of the generatd image file to fill output video file.
+      td6: You can specify the color of the generatd image file to fill output video file with RGB style.

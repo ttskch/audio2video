@@ -1,18 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block subtitle %}{{ 'index_subtitle'|trans }}{% endblock %}
+{% block subtitle %}{{ 'subtitle.index'|trans }}{% endblock %}
 
 {% block content %}
+
+    <div class="py-3">
+        <h3><i class="fa fa-check-square-o"></i> {{ 'index.lead.heading'|trans }}</h3>
+        <hr>
+        <p>{{ 'index.lead.text'|trans|raw }}</p>
+        <hr>
+    </div>
+
     {{ form_start(form, { name: 'form', attr: { id: 'convert-form' } }) }}
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
                 {{ form_row(form.audioFile) }}
-                <span class="form-text text-muted" style="margin-top:-0.5em"><i class="fa fa-exclamation-triangle"></i> {{ 'audio_duration_warning'|trans }}</span>
+                <span class="form-text text-muted" style="margin-top:-0.5em"><i class="fa fa-exclamation-triangle"></i> {{ 'index.audio_duration_warning'|trans }}</span>
             </div>
             <div class="form-group mb30">
                 <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-refresh"></i> {{ 'Convert'|trans }}</button>
-                <span id="advanced-switcher" class="btn btn-outline-secondary float-right {% if form.showAdvanced.vars.value %}active{% endif %}">{{ 'advanced_settings'|trans }}</span>
+                <span id="advanced-switcher" class="btn btn-outline-secondary float-right {% if form.showAdvanced.vars.value %}active{% endif %}">{{ 'index.advanced_settings'|trans }}</span>
             </div>
         </div>
         <div class="col-sm-6 mt-3 mt-sm-0">
@@ -22,10 +30,10 @@
 
                 <ul id="tab-switcher" class="nav nav-tabs mb-3">
                     <li class="nav-item">
-                        <a href="#tab1" class="nav-link {% if form.selectedTab.vars.value == '#tab1' %}active{% endif %}">{{ 'use_image_file'|trans }}</a>
+                        <a href="#tab1" class="nav-link {% if form.selectedTab.vars.value == '#tab1' %}active{% endif %}">{{ 'index.use_image_file'|trans }}</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#tab2" class="nav-link {% if form.selectedTab.vars.value == '#tab2' %}active{% endif %}">{{ 'generate_image'|trans }}</a>
+                        <a href="#tab2" class="nav-link {% if form.selectedTab.vars.value == '#tab2' %}active{% endif %}">{{ 'index.generate_image'|trans }}</a>
                     </li>
                 </ul>
                 <div class="tab-content">

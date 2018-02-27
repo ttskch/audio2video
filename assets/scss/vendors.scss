@@ -5,6 +5,10 @@ $fa-font-path: "~font-awesome/fonts";
 $headings-line-height: 1.3;
 $line-height-base: 1.6;
 
+table.table thead th {
+    border-top: none;
+}
+
 @import "~bootstrap/scss/bootstrap";
 @import "~font-awesome/scss/font-awesome";
 @import "~select2/dist/css/select2";
