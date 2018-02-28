@@ -15,23 +15,21 @@ index:
   generate_image: Generate image
   audio_duration_warning: Duration time of audio file is allowed up to 140 sec
   exception_too_long_duration: Duration time of audio file was over 140 sec
-
-# help
-help:
-  p1:
-    heading: How to use
-    text: Just choose an audio file and click "Convert" button. That's it.
-  p2:
-    heading: Advanced settings
-    text: Clickin "Advanced" button shows you more detailed settings like below.
-  table:
-    thead:
-      th1: Setting
-      th2: Description
-    tbody:
-      td1: You can choose file type of output video file.
-      td2: You can specify frame rate of output video file. But the default value "30" maybe always the best choice.
-      td3: Output video file will be filled with a still image. You can choose whether to use your own image file or generate an image file on the spot.
-      td4: You can choose an image file to fill output video file.
-      td5: You can choose the resolution of the generatd image file to fill output video file.
-      td6: You can specify the color of the generatd image file to fill output video file with RGB style.
+  help:
+    p1:
+      heading: Basic usage
+      text: Just choose an audio file and click "Convert" button. That's it.
+    p2:
+      heading: Advanced settings
+      text: Clickin "Advanced" button shows you more detailed settings like below.
+    table:
+      thead:
+        th1: Setting
+        th2: Description
+      tbody:
+        td1: You can choose file type of output video file.
+        td2: You can specify frame rate of output video file. But the default value "30" maybe always the best choice.
+        td3: Output video file will be filled with a still image. You can choose whether to use your own image file or generate an image file on the spot.
+        td4: You can choose an image file to fill output video file.
+        td5: You can choose the resolution of the generatd image file to fill output video file.
+        td6: You can specify the color of the generatd image file to fill output video file with RGB style.

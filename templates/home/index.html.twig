@@ -2,15 +2,21 @@
 
 {% block subtitle %}{{ 'subtitle.index'|trans }}{% endblock %}
 
-{% block content %}
-
-    <div class="py-3">
-        <h3><i class="fa fa-check-square-o"></i> {{ 'index.lead.heading'|trans }}</h3>
-        <hr>
-        <p>{{ 'index.lead.text'|trans|raw }}</p>
-        <hr>
+{% block eyecatch %}
+    <div id="eyecatch">
+        <div class="container">
+            <h1>{{ 'eyecatch'|trans }}</h1>
+        </div>
     </div>
+{% endblock %}
 
+{% block before_container %}
+    <div class="container py-4">
+        <p class="mb-0">{{ 'index.lead.text'|trans|raw }}</p>
+    </div>
+{% endblock %}
+
+{% block content %}
     {{ form_start(form, { name: 'form', attr: { id: 'convert-form' } }) }}
     <div class="row">
         <div class="col-sm-6">
@@ -62,6 +68,60 @@
         </div>
     </div>
     {{ form_end(form) }}
+{% endblock %}
+
+{% block after_container %}
+    <div class="container py-4 help">
+        <h4 class="mb-3"><i class="fa fa-question-circle-o"></i> {{ 'How to use'|trans }}</h4>
+
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title font-weight-bold"><i class="fa fa-fw fa-angle-double-right"></i> {{ 'index.help.p1.heading'|trans }}</h5>
+                <p class="card-text">{{ 'index.help.p1.text'|trans }}</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title font-weight-bold"><i class="fa fa-fw fa-angle-double-right"></i> {{ 'index.help.p2.heading'|trans }}</h5>
+                <p class="card-text">{{ 'index.help.p2.text'|trans }}</p>
+                <table class="table mb-0">
+                    <thead>
+                    <tr>
+                        <th style="min-width:10rem">{{ 'index.help.table.thead.th1'|trans }}</th>
+                        <th>{{ 'index.help.table.thead.th2'|trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th>{{ 'Output format'|trans }}</th>
+                        <td>{{ 'index.help.table.tbody.td1'|trans }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'Frame rate (fps)'|trans }}</th>
+                        <td>{{ 'index.help.table.tbody.td2'|trans }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'index.use_image_file'|trans }} / {{ 'index.generate_image'|trans }}</th>
+                        <td>{{ 'index.help.table.tbody.td3'|trans }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'Image file'|trans }}</th>
+                        <td>{{ 'index.help.table.tbody.td4'|trans }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'Resolution'|trans }}</th>
+                        <td>{{ 'index.help.table.tbody.td5'|trans }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ 'Background Color'|trans }}</th>
+                        <td>{{ 'index.help.table.tbody.td6'|trans }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}

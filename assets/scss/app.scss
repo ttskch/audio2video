@@ -26,9 +26,12 @@ html {
     }
 }
 
-#content {
-    min-height: 50vh;
+#container-wrapper {
+    padding: 2rem 0;
+    background-color: lighten($warning, 45%);
+}
 
+#content {
     // tweak form appearance
     .form-group {
         .form-check:first-child {
@@ -46,6 +49,10 @@ html {
             border-radius: 0.25rem;
         }
     }
+}
+
+.container.help {
+    color: lighten($secondary, 10%);
 }
 
 #footer {

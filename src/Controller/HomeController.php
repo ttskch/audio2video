@@ -61,13 +61,4 @@ class HomeController extends Controller
 
         return $this->redirectToRoute('home_index');
     }
-
-    /**
-     * @Route("/help/", name="help")
-     * @Template()
-     */
-    public function help()
-    {
-        return [];
-    }
 }
