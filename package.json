@@ -15,7 +15,7 @@
     "font-awesome": "^4.7.0",
     "is-loading": "^2.0.4",
     "jquery": "^3.2.1",
-    "node-sass": "^4.7.2",
+    "node-sass": "^4.9.3",
     "popper.js": "^1.12.9",
     "postcss-loader": "^2.0.9",
     "sass-loader": "^6.0.6",
