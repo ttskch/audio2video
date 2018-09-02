@@ -6,7 +6,8 @@ jobs:
 
     environment:
       - REGISTRY: registry.heroku.com
-      - NAME: audio2video/web
+      - APP: audio2video
+      - TYPE: web
 
     branches:
       only:
@@ -19,12 +20,27 @@ jobs:
       - run: docker -v
 
       # build
-      - run: docker build . -t ${REGISTRY}/${NAME}
+      - run: docker build . -t ${REGISTRY}/${APP}/${TYPE}
 
       # test
-      - run: docker run ${REGISTRY}/${NAME} bin/phpunit
+      - run: echo 'no tests'
+      #- run: docker run ${REGISTRY}/${APP}/${TYPE} bin/phpunit
 
       # deploy
       - run: |
+          # push image
           docker login -u "${DOCKER_USERNAME}" -p "${DOCKER_PASSWORD}" ${REGISTRY}
-          docker push ${REGISTRY}/${NAME}
+          docker push ${REGISTRY}/${APP}/${TYPE}
+          # release it
+          IMAGE_ID=`docker inspect ${REGISTRY}/${APP}/${TYPE} --format={{.Id}}`
+          curl -n -X PATCH https://api.heroku.com/apps/${APP}/formation \
+            -d '{
+              "updates": [
+                {
+                  "type": "${TYPE}",
+                  "docker_image": "'$IMAGE_ID'"
+                }
+              ]
+            }' \
+            -H "Content-Type: application/json" \
+            -H "Accept: application/vnd.heroku+json; version=3.docker-releases"

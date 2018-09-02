@@ -6,16 +6,32 @@ services:
 env:
   global:
     - REGISTRY=registry.heroku.com
-    - NAME=audio2video/web
+    - APP=audio2video
+    - TYPE=web
 
 before_script:
-  - docker build . -t ${REGISTRY}/${NAME}
+  - docker build . -t ${REGISTRY}/${APP}/${TYPE}
 
 script:
-  - docker run ${REGISTRY}/${NAME} bin/phpunit
+  - echo 'no tests'
+#  - docker run ${REGISTRY}/${APP}/${TYPE} bin/phpunit
 
 after_success:
   - if [ "${TRAVIS_PULL_REQUEST}" == "false" ] && [ "${TRAVIS_BRANCH}" == "master" ]; then
+      # push image
       docker login -u "${DOCKER_USERNAME}" -p "${DOCKER_PASSWORD}" ${REGISTRY};
-      docker push ${REGISTRY}/${NAME};
+      docker push ${REGISTRY}/${APP}/${TYPE};
+      # release it
+      IMAGE_ID=`docker inspect ${REGISTRY}/${APP}/${TYPE} --format={{.Id}}`
+      curl -n -X PATCH https://api.heroku.com/apps/${APP}/formation \
+        -d '{
+          "updates": [
+            {
+              "type": "${TYPE}",
+              "docker_image": "'$IMAGE_ID'"
+            }
+          ]
+        }' \
+        -H "Content-Type: application/json" \
+        -H "Accept: application/vnd.heroku+json; version=3.docker-releases"
     fi
