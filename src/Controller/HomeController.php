@@ -34,7 +34,7 @@ class HomeController extends Controller
                 $downloadFileName = sprintf('%s.%s', pathinfo($criteria->audioFile->getClientOriginalName(), PATHINFO_FILENAME), $criteria->outputFormat);
                 $session->set('download', [$outputFilePath, $downloadFileName]);
             } catch (\Exception $e) {
-                $this->addFlash('danger', $translator->trans($e->getMessage()));
+                $this->addFlash('danger', preg_replace('/\n/', '<br>', $translator->trans($e->getMessage())));
             }
 
             // don't redirect to 'home_download' so that can inform frontend that conversion is complete
