@@ -27,11 +27,12 @@ after_success:
         -d '{
           "updates": [
             {
-              "type": "${TYPE}",
+              "type": "'${TYPE}'",
               "docker_image": "'$IMAGE_ID'"
             }
           ]
         }' \
         -H "Content-Type: application/json" \
-        -H "Accept: application/vnd.heroku+json; version=3.docker-releases"
+        -H "Accept: application/vnd.heroku+json; version=3.docker-releases" \
+        -H "Authorization: Bearer ${DOCKER_PASSWORD}"
     fi
