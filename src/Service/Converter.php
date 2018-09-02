@@ -46,7 +46,7 @@ class Converter
     {
         // get the duration of the input audio.
         $process = new Process("ffprobe -show_streams -print_format json '{$this->audioFilePath}' 2>/dev/null");
-        $process->setTimeout(300);
+        $process->setTimeout(60);
         $process->run();
         $this->ensureSuccessful($process);
         $duration = floatval(json_decode($process->getOutput())->streams[0]->duration);
@@ -78,7 +78,7 @@ class Converter
 
         // generate video file.
         $process = new Process("ffmpeg -r {$this->frameRate} -i '{$this->tmpDirPath}/%06d.{$imageExt}' -i '{$this->audioFilePath}' -r 30 -vcodec libx264 -pix_fmt yuv420p '{$this->outputFilePath}'");
-        $process->setTimeout(300);
+        $process->setTimeout(60);
         $process->run();
         $this->ensureSuccessful($process);
 
