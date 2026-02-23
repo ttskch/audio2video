@@ -1,4 +1,9 @@
+FROM composer:2.2 AS composer
+
 FROM ttskch/nginx-php-fpm-heroku
+
+# Copy Composer 2.2 LTS (last version supporting PHP 7.1) from official image
+COPY --from=composer /usr/bin/composer /usr/local/bin/composer
 
 RUN \
     apk update \
@@ -27,6 +32,10 @@ RUN \
     \
     # remove caches to decrease image size
     && rm -rf /var/cache/apk/* \
+    \
+    # allow Composer 2.2 plugins
+    && sudo -u nonroot composer config --no-plugins allow-plugins.symfony/flex true \
+    && sudo -u nonroot composer config --no-plugins allow-plugins.symfony/thanks true \
     \
     # re-run composer install
     # (sudo -u nonroot is required because cannot run npm install by root without --unsafe-perm)
