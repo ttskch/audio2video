@@ -1,0 +1,36 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build . -t registry.heroku.com/audio2video/web
+
+      - name: Login to Heroku Container Registry
+        run: docker login -u "${{ secrets.HEROKU_EMAIL }}" -p "${{ secrets.HEROKU_API_KEY }}" registry.heroku.com
+
+      - name: Push Docker image
+        run: docker push registry.heroku.com/audio2video/web
+
+      - name: Release to Heroku
+        run: |
+          IMAGE_ID=$(docker inspect registry.heroku.com/audio2video/web --format={{.Id}})
+          curl -n -X PATCH https://api.heroku.com/apps/audio2video/formation \
+            -d '{
+              "updates": [
+                {
+                  "type": "web",
+                  "docker_image": "'"$IMAGE_ID"'"
+                }
+              ]
+            }' \
+            -H "Content-Type: application/json" \
+            -H "Accept: application/vnd.heroku+json; version=3.docker-releases" \
+            -H "Authorization: Bearer ${{ secrets.HEROKU_API_KEY }}"
